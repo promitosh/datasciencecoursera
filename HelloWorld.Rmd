@@ -15,3 +15,13 @@ I very much enjoy it
 my plan to be a data scientist
 
 for that I have to achieve some skills
+Usually variable is used to store data but to store data sets in R used dataframe, a big boss of datascience.Conceptually we can think dataframe as tables.Here row represent observations and different variables represent columns.
+Dataframes are useful for datasets because we can combine different types data into one single object.
+Object means python object,in python each data type is an object,data types list,integer,boolean,floating,set,array
+for object type list
+album_list=["pop","rock","melody"]
+an object is an instance of a particular type,e.g.redcircle,green circle
+if we type class(murders) ,it shows  data.frame type for object m....str murders
+classmurders)
+
+structure of object murders can be viewd by function str(object_name)
