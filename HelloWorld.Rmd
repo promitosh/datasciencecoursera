@@ -8,5 +8,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## This is a markdown file 
+I have completed datascience tools box
+and learned Version control system
+GIT and GitHub
+I very much enjoy it
+my plan to be a data scientist
 
-
+for that I have to achieve some skills
