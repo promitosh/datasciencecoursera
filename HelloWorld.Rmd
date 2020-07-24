@@ -23,5 +23,22 @@ album_list=["pop","rock","melody"]
 an object is an instance of a particular type,e.g.redcircle,green circle
 if we type class(murders) ,it shows  data.frame type for object m....str murders
 classmurders)
+getwd()
+library(dslabs)
+getwd()
+a<-1
+b<-1
+c<- -1
+x<-(-b+sqrt(b^2-4*a*c))/(2*a)
+str(murders)
+class(murders)
+length("pop")
+x<-murders$population
+data("murders")
+library(dslabs)
+install.packages("tidyverse")
+data("murders")
+head("murders")
+str("murders")
 
 structure of object murders can be viewd by function str(object_name)
