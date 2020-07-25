@@ -257,12 +257,55 @@ head(co2)
 co2_wide <- data.frame(matrix(co2, ncol = 12, byrow = TRUE)) %>%
 setNames(1:12) %>%
 mutate(year = as.character(1959:1997))
-co2_wide
-co2_tidy <- gather(co2_wide,co2,month,-year
-)
 co2_tidy
 co2_tidy <- gather(co2_wide,month,co2,-year)
 head(co2_tidy)
+co2_wide <- data.frame(matrix(co2, ncol = 12, byrow = TRUE)) %>%
+setNames(1:12) %>%
+mutate(year = as.character(1959:1997))
+library(deplyr)
+library(dslabs)
+install.packages(deplyr)
+library(deplyr)
+co2_wide <- data.frame(matrix(co2, ncol = 12, byrow = TRUE)) %>%
+setNames(1:12) %>%
+mutate(year = as.character(1959:1997))
+library(tidyverse)
+co2_wide <- data.frame(matrix(co2, ncol = 12, byrow = TRUE)) %>%
+setNames(1:12) %>%
+mutate(year = as.character(1959:1997))
+head(co2_wide)
+co2_tidy <- gather(co2_wide,month,co2,-year)
+head(co2_tidy)
+str(co2_tidy)
+co2_tidy <- gather(co2_wide,month,co2)
+head(co2_tidy)
+str(co2_wide)
+co2_tidy <- gather(month,co2,-year)
+names(co2_wide)
+co2_tidy <- gather(co2_wide,month,co2,-year)
+head(co2_tidy)
+co2_tidy[44:47]
+co2_tidy[3:5]
+co2_wide[3:5]
+co2_tidy %>% ggplot(aes(as.numeric(month), co2, color = year)) + geom_line()
+class(month)
+type(month)
+library(dslabs)
+data(admissions)
+dat <- admissions %>% select(-applicants)
+head(dat)
+dat_tidy <- spread(dat, gender, admitted)
+head(dat)
+head(dat_tidy)
+tmp <- gather(admissions, key, value, admitted:applicants)
+tmp
+tmp2 <- unite(tmp, column_name, c(key, gender))
+head(tmp)
+tmp2 <- unite(tmp, column_name, c(gender, key))
+head(tmp2)
+tmp2 <- unite(tmp, column_name, c(key, gender))
+tmp2
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
