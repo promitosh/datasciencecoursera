@@ -29,24 +29,103 @@ h <- read_html(url)
 library(rvest)
 url <- "https://en.wikipedia.org/wiki/Murder_in_the_United_States_by_state"
 h <- read_html(url)
-class(h)
-h
-h <- read_html("http://www.foodnetwork.com/recipes/alton-brown/guacamole-recipe-1940609")
-library(rvest)
-library(tidyverse)
-library(rvest)
+h<- read_html("http://www.foodnetwork.com/recipes/alton-brown/guacamole-recipe-1940609")
 h <- read_html(url)
 url <- "https://en.wikipedia.org/wiki/Murder_in_the_United_States_by_state"
 h <- read_html(url)
-class(h)
-h
-h <- read_html("http://www.foodnetwork.com/recipes/alton-brown/guacamole-recipe-1940609")
 get_recipe("http://www.foodnetwork.com/recipes/food-network-kitchen/pancakes-recipe-1913844")
-There are several other powerful tools provided by rvest. For example, the functions html_form(), set_values(), and submit_form() permit you to query a webpage from R. This is a more advanced topic not covered here.
+ the functions html_form(), set_values(), and submit_form() permit to query a webpage from R. 
 We learned that tables in html are associated with the table node.
 list of objects class xml_node
 The html_nodes() function returns a list of objects of class xml_node. We can see the content of each one using, for example, the html_text() function. You can see the content for an arbitrarily picked component like this
-If the content of this object is an html table, we can use the html_table() function to convert it to a data frame:h<-read_html(url)
+If the content of this object is an html table, we can use the html_table() function to convert it to a data frame:
+h<-read_html(url)
+library(tidyverse)
+library(rvest)
+h <- read_html(url)
+library(rvest)
+url <- "https://en.wikipedia.org/wiki/Murder_in_the_United_States_by_state"
+h <- read_html(url)
+class(h)
+h<- read_html("http://www.foodnetwork.com/recipes/alton-brown/guacamole-recipe-1940609")
+library(rvest)
+url <- "https://en.wikipedia.org/wiki/Murder_in_the_United_States_by_state"
+h<- read_html("http://www.foodnetwork.com/recipes/alton-brown/guacamole-recipe-1940609")
+ingredients <- h %>% html_nodes(".o-Ingredients__a-Ingredient")%>% html_text()
+recipe <- h %>% html_node(".o-AssetTitle__a-HeadlineText")%>% html_text()
+
+guacamole <- list(recipe, prep_time, ingredients)
+prep_time <- h %>% html_node(".m-RecipeInfo__a-Description--Total") %>% html_text()
+
+h<- read_html("http://www.foodnetwork.com/recipes/alton-brown/guacamole-recipe-1940609")
+
+ingredients <- h %>% html_nodes(".o-Ingredients__a-Ingredient")%>% html_text()
+recipe <- h %>% html_node(".o-AssetTitle__a-HeadlineText")%>% html_text()
+prep_time <- h %>% html_node(".m-RecipeInfo__a-Description--Total") %>% html_text()
+
+guacamole <- list(recipe, prep_time, ingredients)
+
+get_recipe <- function(url)
+{
+h <- read_html(url)
+recipe <- h %>% html_node(".o-AssetTitle__a-HeadlineText") %>% html_text()
+prep_time <- h %>% html_node(".m-RecipeInfo__a-Description--Total") %>% html_text()
+ingredients <- h %>% html_nodes(".o-Ingredients__a-Ingredient") %>% html_text()
+return(list(recipe = recipe, prep_time = prep_time, ingredients = ingredients))
+}
+
+get_recipe("http://www.foodnetwork.com/recipes/food-network-kitchen/pancakes-recipe-1913844")
+url<-"https://web.archive.org/web/20181024132313/http://www.stevetheump.com/Payrolls.htm"
+h <- read_html(url)
+nodes <- html_nodes(h, "table")
+html_table(nodes[[8]])
+data("nodes")
+nodes<-html_nodes(h,"table")
+nodes<-html_table(nodes[[2]])
+nodes<-html_table(nodes[[1]])
+tab3<-nodes<-html_table(nodes[[3]])
+tab3<-html_table(nodes[[3]])
+tab1<-nodes<-html_table(nodes[[1]])
+tab1
+tab4<-nodes<-html_table(nodes[[4]])
+nodes<-html_nodes(h,"table")
+tab4<-nodes<-html_table(nodes[[4]])
+tab_1<-nodes<-html_table(nodes[[10]])
+tab_1<-html_table(nodes[10])
+
+url<- "https://web.archive.org/web/20181024132313/http://www.stevetheump.com/Payrolls.htm"
+h<-read_html(url)
+nodes<-html_nodes(h,"table")
+tab_1<-html_table(nodes[10])
+tab_1 <- as.data.frame(tab_1)
+tab_1 <- tab_1[-1, -1]
+names(tab_1) <- c("Team", "Payroll", "Average")
+
+tab_2<-html_table(nodes[19])
+tab_2 <- as.data.frame(tab_2)
+head(tab_2)
+tab_2<-html_table(nodes[19])
+tab_2 <- as.data.frame(tab_2)
+head(tab_2)
+tab_2<-tab_2[-1,]
+
+names(tab_2) <- c("Team", "Payroll", "Average")
+str(tab_1)
+str(tab_2)
+
+full_join(tab_1,tab_2, by = "Team") %>%
+nrow()
+
+url<- "https://en.wikipedia.org/w/index.php?title=Opinion_polling_for_the_United_Kingdom_European_Union_membership_referendum&oldid=896735054"
+h<-read_html(url)
+tab<-html_nodes(h,"table")
+length(tab)
+length(tab)
+
+tab[[5]] %>% html_table(fill = TRUE) %>%
+names()
+url<- "https://en.wikipedia.org/w/index.php?title=Gun_violence_in_the_United_States_by_state&direction=prev&oldid=810166167"
+murders_raw <- read_html(url)
 
 ## R Markdown
 
