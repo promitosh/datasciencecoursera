@@ -1,0 +1,80 @@
+---
+title: "string parsing"
+author: "promitosh"
+date: "8/2/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+commas <- function(x) any(str_detect(x, ","))
+murders_raw %>% summarize_all(commas)
+#>   state population total murder_rate
+#> 1 FALSE       TRUE  TRUE       FALSE
+
+data %>% mutate_at(2:3, funs(str_replace_all(., c("\\$|,"), ""))) %>% 
+    mutate_at(2:3, as.numeric)
+    
+library(stringr)
+s
+x<-'22"'
+x
+x<-"5\'6\""
+cat(x)
+murders_raw$population[1:3]
+commas <- function(x) any(str_detect(x, ","))
+murders_raw %>% summarize_all(commas)
+test_1 <- str_replace_all(murders_raw$population, ",", "")
+test_1 <- as.numeric(test_1)
+test_2 <- parse_number(murders_raw$population)
+identical(test_1, test_2)
+murders_new <- murders_raw %>% mutate_at(2:3, parse_number)
+head(murders_new)
+murders_new%>% head()
+cat(` LeBron James is 6'8" `)
+cat<-` LeBron James is 6'8" `
+x<-` LeBron James is 6'8" `
+x<-"LeBron James is 6’8\" "
+cat(x)
+murders_raw$population[1:3]
+test_1 <- str_replace_all(murders_raw$population, ",", "")
+head(test_1)
+test_1 %>% mutate_at(1:3, as.numeric)
+test_1 <- as.numeric(test_1)
+data <- data.frame(A = c(1,2,3,4),
+B = c(2,3,4,1),
+C = c(4,1,9,0))
+data
+data %>% mutate_all(parse_number)
+parse_number(data)
+parse_number(test_1)
+cal<-data.frame(Month=c(jan,feb,mar),sales=c($111,$220,$555))
+cal<-(Month=c(jan,feb,mar),sales=c($111,$220,$555))
+data %>% mutate_at(2:3, as.numeric)
+data <- data.frame(A = c(1,2,3,4), B = c("2,00",3,4,1),C = c(4,1,9,0))
+data
+data %>% mutate_at(2:3, as.numeric)
+dat %>% mutate_at(2:3, funs(str_replace_all(., c("\\$|,"), ""))) %>%
+mutate_at(2:3, as.numeric)
+data %>% mutate_at(2:3, funs(str_replace_all(., c("\\$|,"), ""))) %>%
+mutate_at(2:3, as.numeric)
+data %>% mutate_at(2:3, parse_number)
+data <- data.frame(A = c(1,2,3,4), B = c("2,00",3,4,1),C = c(4,1,9,0))
+data %>% mutate_at(2:3, parse_number)
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
