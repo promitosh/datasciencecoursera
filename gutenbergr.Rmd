@@ -1,0 +1,472 @@
+---
+title: "date data"
+author: "promitosh"
+date: "8/21/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+str_extract(hour_max,2)
+str_replace_all("\\s", "_")
+the_names
+new_research_funding_rates <- tab[6:14] %>%
+str_trim %>%
+str_split("\\s{2,}", simplify = TRUE) %>%
+data.frame(stringsAsFactors = FALSE) %>%
+setNames(the_names) %>%
+mutate_at(-1, parse_number)
+new_research_funding_rates %>% head()
+identical(research_funding_rates, new_research_funding_rates)
+fruits <- c(
+"apples and oranges and pears and bananas",
+"pineapples and mangos and guavas"
+)
+str_split(fruits, " and ")
+library(rvest)
+library(dplyr)
+install.packages(strngr)
+library(stringr)
+str_split(fruits, " and ")
+z <- 'World, Asia, India, Punjab and Jalandhar'
+str_split(z, ",\\s|\\sand\\s")
+str_split(z, ",\\s|and\\s")
+str_split(z, ",\\s")
+str_split(z, ", | and ")
+staff<-c(Mandy, Chris and Laura,Steve, Ruth and Frank)
+staff<-c("Mandy, Chris and Laura,Steve, Ruth and Frank")
+str_split(staff, ",|and")
+str_split(schedule$staff, ", | and ")
+str_split(staff, ", | and ")
+staff<-c("Mandy, Chris and Laura, Steve, Ruth and Frank")
+str_split(staff, ", | and ")
+str_split(schedule$staff, ",\\s|\\sand\\s")
+str_split(staff, ",\\s|\\sand\\s")
+str_split(staff, "\\s?(,|and)\\s?")
+url <- "https://en.wikipedia.org/w/index.php?title=Opinion_polling_for_the_United_Kingdom_European_Union_membership_referendum&oldid=896735054"
+tab <- read_html(url) %>% html_nodes("table")
+polls <- tab[[5]] %>% html_table(fill = TRUE)
+names(polls)
+polls %>% rename(Date(s) conducted= dates,Remain=remain,Leave=leave,Undecided=undecided,Lead=lead,Sample = samplesize,Conducted by=pollster,`Polling type`="poll_type",Notes="notes")
+polls %>% rename(Date conducted= dates,Remain=remain,Leave=leave,Undecided=undecided,Lead=lead,Sample = samplesize,Conducted b
+polls %>% rename("Date(s) conducted"="dates","Remain"="remain","Leave"="leave","Undecided"="undecided","Lead"="lead","Sample" = "samplesize",`Conducted by`="pollster",`Polling type`="poll_type","Notes"="notes")
+polls %>% rename("Dates conducted"="dates","Remain"="remain","Leave"="leave","Undecided"="undecided","Lead"="lead","Sample" = "samplesize",`Conducted by`="pollster",`Polling type`="poll_type","Notes"="notes")
+names(polls)[0] <- "dates"
+names(my_data)[2] <- "sepal_width"
+names(polls)[0] <- "dates"
+names(polls)[0]
+head(polls)
+colnames(polls)
+names(polls[0])
+names(polls)[0]
+names(polls)[2]
+names(polls)[1]<-"dates"
+names(polls)[1]
+names(polls)[2:3]<-"remain","leave"
+names(polls)[2:3]<-c("remain","leave")
+names(polls)[2:3]
+names(polls)[4:9]<-c("undecided","lead","samplesize","pollster","poll_type","notes")
+#rows that have a percent sign (%) in the remain column.
+x<-polls$remain
+length(x)
+pattern7<-"%"
+percent<-(x,pattern7)
+percent<-(x,"%")
+pattern7<-"^%$"
+percent<-(x,pattern7)
+percent <- function(x) any(str_detect(x, "%"))
+remain %>% summarize_all(percent())
+polls$remain %>% summarize_all(percent())
+
+type.convert(as.numeric(x))
+pat<-"^\\d%$"
+with_per<-x,pat)
+per<-any(str_detect(polls$remain, "\\d%")
+summarise_all(per)
+x <- as.numeric(polls$remain)
+head(x)
+#> [1] 75 70 68 74 61 65
+pattern_with_groups <-  "^([4-7]),(\\d*)$"
+yes <- c("5,9", "5,11", "6,", "6,1")
+no <- c("5'9", ",", "2,8", "6.1.1")
+s <- c(yes, no)
+str_replace(s, pattern_with_groups, "\\1'\\2")
+pattern_with_groups <-  "^([3-7]),(\\d*)$"
+yes <- c("5,9", "5,11", "6,", "6,1")
+no <- c("5'9", ",", "2,8", "6.1.1")
+string<-c(yes,no)
+str_replace(string, pattern_with_groups, "\\1'\\2")
+function_name(polls$undecided, "arg1", "arg2")
+head(x)
+names(polls)
+as.numeric(str_replace(polls$remain, "%", ""))
+as.numeric(str_replace(polls$remain, "%", ""))/100
+as.numeric(str_remove(polls$remain, "%"))
+as.numeric(polls$remain)/100
+parse_number(polls$remain)/100
+str_remove(polls$remain, "%")/100
+parse_number(polls$remain)/100
+strings <- c(" 219 733 8965", "329-293-8753 ", "banana", "595 794 7569",
+"387 287 6718", "apple", "233.398.9187  ", "482 952 3315",
+"239 923 8115 and 842 566 4692", "Work: 579-499-7527", "$1000",
+"Home: 543.355.3679")
+phone <- "([2-9][0-9]{2})[- .]([0-9]{3})[- .]([0-9]{4})"
+str_extract(strings, phone)
+str_match(strings, phone)
+pp<-str_detect(polls$remain,pattern7)
+str_replace_na(c(NA, "remain", "leave"))
+str_replace_na(polls$undecided, "N/A", "0")
+
+str_replace_na(polls$undecided, "N/A","0")
+temp <- str_extract_all(polls$dates, _____)
+temp <- str_extract_all(polls$dates, "\\d?\\s[a-zA-Z]?")
+end_date <- sapply(temp, function(x) x[length(x)]) # take last element (handles polls that cross month boundaries)
+temp <- str_extract_all(polls$dates, "\\d+\\s[a-zA-Z]+")
+temp <- str_extract_all(polls$dates, "[0-9]+\\s[a-zA-Z]+")
+temp <- str_extract_all(polls$dates,"\\d+\\s[a-zA-Z]+"ngth(x)]) # take last element (handles polls that cross month boundaries)
+temp <- str_extract_all(polls$dates, "\\d+\\s[a-zA-Z]+")
+end_date <- sapply(temp, function(x) x[length(x)])
+temp <- str_extract_all(polls$dates, "\\d{1,2}\\s[a-zA-Z]+")
+end_date <- sapply(temp, function(x) x[length(x)])
+temp <- str_extract_all(polls$dates, "\\d+\\s[a-zA-Z]{3,5}")
+
+end_date <- sapply(temp, function(x) x[length(x)])
+# inspect the startdate column of 2016 polls data, a Date type
+polls_us_election_2016$startdate %>% head
+
+as.numeric(polls_us_election_2016$startdate) %>% head
+polls_us_election_2016$startdate %>% head
+# ggplot is aware of dates
+polls_us_election_2016 %>% filter(pollster == "Ipsos" & state =="U.S.") %>%
+ggplot(aes(startdate, rawpoll_trump)) +
+geom_line()
+# lubridate: the tidyverse date package
+library(lubridate)
+head(date)
+# select some random dates from polls
+set.seed(2)
+dates <- sample(polls_us_election_2016$startdate, 10) %>% sort
+# extract month, day, year from date strings
+data.frame(date = dates,
+month = month(dates),
+day = day(dates),
+year = year(dates))
+month(dates, label = TRUE)    # extract month label
+as.Date("1974-12-23") %>% as.numeric
+tibble(date = dates,
+month = month(dates),
+day = day(dates),
+year = year(dates))
+now()
+OlsonNames()
+now() %>% hour()
+now() %>% minute()
+now() %>% second()
+x <- c("12:34:56")
+str_replace(s, pattern_with_groups, "\\1'\\2")
+pattern_with_groups <-  "^([3-7]),(\\d*)$"
+yes <- c("5,9", "5,11", "6,", "6,1")
+no <- c("5'9", ",", "2,8", "6.1.1")
+string<-c(yes,no)
+str_replace(string, pattern_with_groups, "\\1'\\2")
+function_name(polls$undecided, "arg1", "arg2")
+as.numeric(str_replace(polls$remain, "%", ""))
+as.numeric(str_replace(polls$remain, "%", ""))/100
+
+as.numeric(polls$remain)/100
+parse_number(polls$remain)/100
+str_remove(polls$remain, "%")/100
+parse_number(polls$remain)/100
+strings <- c(" 219 733 8965", "329-293-8753 ", "banana", "595 794 7569",
+"387 287 6718", "apple", "233.398.9187  ", "482 952 3315",
+"239 923 8115 and 842 566 4692", "Work: 579-499-7527", "$1000",
+"Home: 543.355.3679")
+phone <- "([2-9][0-9]{2})[- .]([0-9]{3})[- .]([0-9]{4})"
+str_extract(strings, phone)
+str_match(strings, phone)
+pp<-str_detect(polls$remain,pattern7)
+str_replace_na(c(NA, "remain", "leave"))
+str_replace_na(polls$undecided, "N/A", "0")
+str_replace_na(polls$undecided, "N/A", "\\d")
+str_replace_na(polls$undecided, "N/A", 0)
+str_replace_na(polls$undecided, "N/A",0)
+str_replace_na(polls$undecided, "N/A","0")
+temp <- str_extract_all(polls$dates, _____)
+temp <- str_extract_all(polls$dates, "\\d?\\s[a-zA-Z]?")
+end_date <- sapply(temp, function(x) x[length(x)]) # take last element (handles polls that cross month boundaries)
+temp <- str_extract_all(polls$dates, "\\d+\\s[a-zA-Z]+")
+temp <- str_extract_all(polls$dates, "[0-9]+\\s[a-zA-Z]+")
+
+temp <- str_extract_all(polls$dates, "\\d+\\s[a-zA-Z]{3,5}")
+
+temp <- str_extract_all(polls$dates, "\\d{1,2}\\s[a-zA-Z]+")
+end_date <- sapply(temp, function(x) x[length(x)])
+head(end_date)
+
+temp <- str_extract_all(polls$dates, ""\\d+\\s[a-zA-Z]+")
+temp <- str_extract_all(polls$dates, "\\d{1,2}\\s[a-zA-Z]+")
+temp <- str_extract_all(polls$dates, "\\d+\\s[a-zA-Z]+")
+end_date <- sapply(temp, function(x) x[length(x)])
+# inspect the startdate column of 2016 polls data, a Date typ
+
+as.numeric(polls_us_election_2016$startdate) %>% head
+# ggplot is aware of dates
+polls_us_election_2016 %>% filter(pollster == "Ipsos" & state =="U.S.") %>%
+ggplot(aes(startdate, rawpoll_trump)) +
+geom_line()
+# lubridate: the tidyverse date package
+# select some random dates from polls
+set.seed(2)
+dates <- sample(polls_us_election_2016$startdate, 10) %>% sort
+dates
+# extract month, day, year from date strings
+data.frame(date = dates,
+month = month(dates),
+day = day(dates),
+year = year(dates))
+month(dates, label = TRUE)    # extract month label
+as.Date("1970-01-03") %>% as.numeric
+tibble(date = dates,
+month = month(dates),
+day = day(dates),
+year = year(dates))
+x <- c("12:34:56")
+hms(x)
+#> [1] "12H 34M 56S"
+x <- "Nov/2/2012 12:34:56"
+mdy_hms(x)
+#> [1] "2012-11-02 12:34:56 UTC"
+set.seed(1)
+url <- 'http://www.trumptwitterarchive.com/data/realdonaldtrump/%s.json'
+trump_tweets <- map(2009:2017, ~sprintf(url, .x)) %>%
+map_df(jsonlite::fromJSON, simplifyDataFrame = TRUE) %>%
+filter(!is_retweet & !str_detect(text, '^"')) %>%
+mutate(created_at = parse_date_time(created_at, orders = "a b! d! H!:M!:S! z!* Y!", tz="EST"))
+library(dslabs)
+data("trump_tweets")
+head(trump_tweets)
+names(trump_tweets)
+trump_tweets %>% select(text) %>% head
+trump_tweets %>% count(source) %>% arrange(desc(n))
+trump_tweets %>%
+campaign_tweets <- trump_tweets %>%
+extract(source, "source", "Twitter for (.*)") %>%
+filter(source %in% c("Android", "iPhone") &
+created_at >= ymd("2015-06-17") &
+created_at < ymd("2016-11-08")) %>%
+filter(!is_retweet) %>%
+arrange(created_at)
+data(brexit_polls)
+data(brexit_polls)
+library(dslabs)
+library(tidyverse)
+library(lubridate)
+library(tidyr)
+library(dplyr)
+x<-brexit_polls$startdate
+month(x, label = TRUE)
+
+as.numeric(as.factor(months(x)))
+df %>% extract(x, "Apr")
+extract(x,"Apr")
+month(x, label = TRUE)
+x<-round_date(brexit_polls$enddate)
+x<-brexit_polls$enddate %>%
+mutate(week = round_date(enddate, "week")) %>%
+group_by(week)
+x<-brexit_polls$startdate %>%
+as.numeric(head(x))
+month(x, label = TRUE)
+class(x)
+x%>%select(Apr)
+select(iris, starts_with("Petal"))
+select(brexit_polls,startdate("Apr"))
+library(dslabs)
+x%>%group_by(months)
+six.weeks <- seq(x, length = 6, by = "month")
+tm1 <- as.POSIXct("2013-07-24 23:55:26")
+x<-brexit_polls$startdate
+months(x)
+y<-months(x)
+y[57]
+format(x,"%m")
+month<- strftime(brexit_polls,"%m")
+s<-y['06']
+s
+s<-y[57:78]
+length(s)
+z<-format(x,"%m")
+head(z)
+z%>% select("06")
+df1 = data.frame (Name =c('Annie','Catherine','Teresa','Peterson','Richard','joe'),
+Date_of_birth = as.Date(c('1995-06-16','1991-04-19','1993-07-22','1990-03-26','1991-05-12','1992-09-13')))
+df1$birth_month <- as.numeric(format(df1$Date_of_birth,'%m'))
+df1
+dates <- sample(brexit_polls$startdate, 10) %>% sort
+tibble(date = dates,
+month = month(dates),
+day = day(dates),
+year = year(dates))
+library(lubridate)
+set.seed(2002)
+dates <- sample(polls_us_election_2016$startdate, 10) %>% sort
+dates
+brexit_polls %>%
+mutate(week = round_date(enddate,unit= "week"))
+mutate(week = round_date(enddate,"week"))
+brexit_polls %>%
+mutate(week = round_date(enddate, "week")) %>%
+group_by(week)
+n<-brexit_polls %>%
+mutate(week = round_date(enddate, "week")) %>%
+group_by(week)
+head(n)
+n[8]
+n[10]
+p<-n$week
+p[,10]
+p(,10)
+p[1]
+p[10]
+p[22]
+p[11:22]
+p[16:23]
+p[16:30]
+p[16:28]
+x$weekday <- format(as.Date(x$Date_of_order), "%a")
+x$weekday <- format(as.Date(x$enddate), "%a")
+brexit_polls$weekdays<-format(as.Date(brexit_polls$enddate), "%a")
+head(brexit_polls)
+v<-brexit_polls$weekdays
+as.POSIXlt('2015-03-01')$wday
+wday(mdy(v))
+wday(v)
+v[1:10]
+v
+as.POSIXlt('v')$wday
+summarise(v)
+summarise_each(v,"Fri")
+thu<-str_match(brexit_polls$weekdays,"Thu")
+str_extract(brexit_polls$weekdays,"Mon")
+str_extract(brexit_polls$weekdays,"Sun")
+data(movielens)
+movielens %>%
+mutate(timestamp1 = as_datetime(timestamp),
+year = year(timestamp1)) %>%
+group_by(year) %>%
+summarise(n = n()) %>%
+arrange(desc(n))
+movielens %>%  mutate(timestamp1 = as_datetime(timestamp),
+year = year(timestamp1)) %>%
+group_by(hour) %>%
+summarise(n = n()) %>%
+arrange(desc(n))
+str(movielens)
+movielens %>%  mutate(timestamp1 = as_datetime(timestamp),
+year = year(timestamp1)) %>% group_by(rating) %>%
+summarise(n = n()) %>%
+arrange(desc(n))
+head(movielens)
+movielens$rating4<-format(as.Date(movielens$rating,"%a"))
+movielens$rating4<-format(as.Date(movielens$rating),"%a")
+ymd(1260759205)
+as.Date(1260759205)
+as.POSIXct(1260759179, origin = "1970-01-01", tz = "UTC")
+head(dates)
+dates<-as_datetime(movielens$timestamp)
+library(dplyr)
+year = year(timestamp1)) %>% group_by(rating) %>%
+movielens %>%  mutate(timestamp1 = as_datetime(timestamp),
+year = year(timestamp1)) %>% group_by(rating) %>%
+summarise(n = n()) %>%
+arrange(desc(n))
+movielens %>%  mutate(timestamp1 = as_datetime(timestamp),
+hour = hour(timestamp1)) %>% group_by(rating) %>%
+summarise(n = n()) %>%
+arrange(desc(n))
+movielens %>%
+head(movielens)
+movielens$date<-format(as.Date(dates),"%a")
+head(movielens)
+movielens %>%  mutate(timestamp1 = as_datetime(timestamp),
+hour=hour(timestamp1)
+%>%
+summarise(n = n()) %>%
+arrange(desc(n))
+%>% group_by(rating)
+f<-movielens %>%  mutate(timestamp1 = as_datetime(timestamp),
+hour = hour(timestamp1)) %>%
+summarise(n = n())
+arrange(desc(n))
+movielens %>%  mutate(timestamp1 = as_datetime(timestamp),
+hour = hour(timestamp1)) %>%
+summarise(n = n())
+movielens %>%  mutate(timestamp1 = as_datetime(timestamp),
+hour = hour(timestamp1)) %>%
+summarise(n = n())
+arrange(desc(n))
+movielens %>%  mutate(timestamp1 = as_datetime(timestamp),
+hour = hour(timestamp1)) %>%  summarise(n = n())%>%arrange(desc(n))
+as_datetime(100004)
+head(dates)
+hour(dates)
+hour_max<-hour(dates)
+Str_extract(hour_max,2)df$freq<-str_count(words$text,'\\w+')+1
+
+library(stringr)
+str_extract(hour_max,2)
+str_extract(movielens,2)
+hour_max[333:370]
+reviews_by_hour <- table(hour(dates))    # count reviews by hour
+names(which.max(reviews_by_hour))    # name of hour with most reviews
+k<-(which.max(hour_max))
+reviews_by_hour <- table(hour(dates))
+head(reviews_by_hour)
+which.max(reviews_by_hour)
+names(which.max(reviews_by_hour))
+reviews_by_hour[21]
+str_extract(brexit_polls$weekdays,"Thu")
+summarize(str_extract(brexit_polls$weekdays,"Thu"))
+table(weekdays(brexit_polls$enddate))
+head(brexit_polls)
+brexit_polls$weekdays<-format(as.Date(brexit_polls$enddate), "%a")
+brexit_polls$weekday<-format(as.Date(brexit_polls$enddate), "%a")
+head(brexit_polls)
+table(weekdays)
+table(weekday)
+table(brexit_polls$weekdays)
+sum(month(brexit_polls$startdate) == 4)
+sum(round_date(brexit_polls$enddate, unit = "week") == "2016-06-12")
+install.packages("gutenbergr")
+library(gutenbergr)
+data(gutenberg_metadata)
+str(gutenberg_metadata)
+book_id<-str_detect(gutenberg_metadata,"Pride and Prejudice")
+book_id<-str_detect(gutenberg_metadata,"Pride and Prejudice",negate=FALSE)
+
+
+gutenberg_metadata %>%
+filter(str_detect(title, "Pride and Prejudice"))  %>%
+summarise(n = n_distinct(gutenberg_id))
+gutenberg_works(author == "Austen, Jane", languages = "en", only_text = TRUE,
+rights = c("Public domain in the USA.", "None"), distinct = TRUE,
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
